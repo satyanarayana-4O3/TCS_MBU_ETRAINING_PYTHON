@@ -1,0 +1,56 @@
+# find the no of steps eg:fire house people evacuated
+
+def find_evacuation_steps(houses, N):
+    steps = 0
+
+    while max(houses) > 0:
+        steps += 1
+        max_members = max(houses)
+        max_index = houses.index(max_members)
+
+        for i in range(max_index, N):
+            houses[i] = 0
+
+    return steps
+
+N = int(input())
+houses = list(map(int, input().split()))
+
+evacuation_steps = find_evacuation_steps(houses, N)
+print(evacuation_steps)
+
+#temple of programming secret to find the password with len of n charcters eg:10^9 +7
+
+
+#to find lucky number with ord fun eg:kohli
+
+s=input()
+sum=0
+for c in s:
+    if c.islower():
+        sum+=ord(c) - ord('a') + 1 
+    elif c.isupper():
+        sum+=ord(c) - ord('A') + 1 
+if sum % 9 == 0:
+    print("9")
+else:
+    print(sum % 9)
+    
+           (or)
+
+def calculate_lucky_number(name):
+    alpha_chars = [char for char in name if char.isalpha()]
+    alpha_values = [ord(char.lower()) - ord('a') + 1 for char in alpha_chars]
+    name_sum = sum(alpha_values)
+
+    while name_sum > 9:
+        name_sum = sum(int(digit) for digit in str(name_sum))
+
+    return name_sum
+
+input_string = input("Enter the input string: ")
+hidden_name = ''.join(char for char in input_string if char.isalpha())
+lucky_number = calculate_lucky_number(hidden_name)
+print(f"Lucky number for the hidden name is: {lucky_number}")
+
+#
